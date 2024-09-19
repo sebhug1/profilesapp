@@ -11,8 +11,16 @@ const schema = a
       .authorization((allow) => [
         allow.ownerDefinedIn("profileOwner"),
       ]),
+      Todo: a.model({
+        content: a.string(),
+        isDone: a.boolean()
+      })
+      .authorization((allow) => [
+        allow.ownerDefinedIn("profileOwner"),
+      ])
   })
   .authorization((allow) => [allow.resource(postConfirmation)]);
+  
 export type Schema = ClientSchema<typeof schema>;
 
 export const data = defineData({
