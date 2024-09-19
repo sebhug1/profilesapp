@@ -109,9 +109,21 @@ import { Amplify } from "aws-amplify";
 import "@aws-amplify/ui-react/styles.css";
 import { generateClient } from "aws-amplify/data";
 import outputs from "../amplify_outputs.json";
-import Home from "./Home"; // Import the Home component
+import Home from "./Home";
+import Form from "./Form";
+import TodoList from "./TodoList";
 
 Amplify.configure(outputs);
+//const existingConfig = Amplify.getConfig();
+Amplify.configure(outputs, {
+  API: {
+    REST: {
+      headers: async () => {
+        return { Authorization: authToken };
+      }
+    }
+  }
+});
 const client = generateClient({
   authMode: "userPool",
 });
@@ -148,13 +160,17 @@ export default function App() {
       >
         <Heading level={1}>My Profile</Heading>
         <Divider />
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/profile">Profile</Link>
+        <nav className="nav-links">
+        <Link to="/">Home</Link>
+        <Link to="/form">Form</Link>
+        <Link to="/todolist">TodoList</Link>
+        <Link to="/profile">Profile</Link>
         </nav>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile" element={
+        <Route path="/" element={<Home />} />
+        <Route path="/form" element={<Form />} />
+        <Route path="/todolist" element={<TodoList />} />
+        <Route path="/profile" element={
             <Grid
               margin="3rem 0"
               autoFlow="column"
@@ -183,7 +199,6 @@ export default function App() {
           } />
         </Routes>
         <Button onClick={signOut}>Sign Out</Button>
-        <Button onClick={todoList}>Add new todo</Button>
       </Flex>
     </Router>
   );

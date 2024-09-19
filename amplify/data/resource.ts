@@ -11,6 +11,15 @@ const schema = a
       .authorization((allow) => [
         allow.ownerDefinedIn("profileOwner"),
       ]),
+      FormData: a.model({
+        helmet_id: a.string(),
+        force: a.string(),
+        direction: a.string(),
+        isDone: a.boolean()
+      })
+      .authorization((allow) => [
+        allow.ownerDefinedIn("profileOwner"),
+      ]),
       Todo: a.model({
         content: a.string(),
         isDone: a.boolean()

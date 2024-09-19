@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: rgba(255, 255, 255, 0.87);
+  color: rgb(0, 0, 0);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -32,4 +32,8 @@
 }
 .box:nth-child(3n + 3) {
   grid-column: 3;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
 }

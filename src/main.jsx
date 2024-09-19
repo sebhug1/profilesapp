@@ -12,7 +12,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Authenticator>
     <App />
-    <TodoList />
     </Authenticator>
   </React.StrictMode>
 );
