@@ -26,7 +26,16 @@ const schema = a
       })
       .authorization((allow) => [
         allow.ownerDefinedIn("profileOwner"),
-      ])
+      ]),
+      BackendHelmet: a.model({
+        Helmet_ID: a.integer(),
+        Force: a.integer(),
+        Direction: a.integer(),
+        isDone: a.boolean()
+      })
+      .authorization((allow) => [
+        allow.ownerDefinedIn("profileOwner"),
+      ]),
   })
   .authorization((allow) => [allow.resource(postConfirmation)]);
   
